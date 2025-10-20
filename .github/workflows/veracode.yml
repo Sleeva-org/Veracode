@@ -1,0 +1,38 @@
+name: Veracode Upload and Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  veracode_scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
+
+      - name: Upload & Scan with Veracode
+        uses: veracode/uploadandscan-action@0.2.6
+
+        with:
+          appname: "Verademo"
+          createprofile: true
+          filepath: "app/target/*.war"     # adjust if your artifact path differs
+          sandboxname: "GitHub-Checks"
+        env:
+          VERACODE_API_ID: ${{ secrets.VERACODE_API_ID }}
+          VERACODE_API_KEY: ${{ secrets.VERACODE_API_KEY }}
