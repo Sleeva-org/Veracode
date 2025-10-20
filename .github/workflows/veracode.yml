@@ -1,4 +1,4 @@
-odename: Veracode Upload and Scan
+name: Veracode Upload and Scan
 
 on:
   push:
