@@ -4,7 +4,7 @@
 # ============================================================
 
 # ------------------------------------------------------------
-# GENERAL SETTINGS
+# GENERAL SETTINGSS
 # ------------------------------------------------------------
 global:
   # Set to true to automatically run scans across all repos listed in repo_list.yml
