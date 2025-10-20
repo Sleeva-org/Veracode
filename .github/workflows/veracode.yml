@@ -26,7 +26,7 @@ jobs:
         run: mvn -B clean package -DskipTests
 
       - name: Upload & Scan with Veracode
-        uses: veracode/uploadandscan-action@0.2.6
+        uses: veracode/veracode-upload-and-scan-action@v1.0.0
 
         with:
           appname: "Verademo"
