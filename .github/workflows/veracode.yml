@@ -1,4 +1,4 @@
-name: Veracode Upload and Scan
+odename: Veracode Upload and Scan
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
         run: mvn -B clean package -DskipTests
 
       - name: Upload & Scan with Veracode
-        uses: Sleeva-org/veracode-uploadandscan-action@main
+        uses: veracode/veracode-uploadandscan-action@0.2.6
 
         with:
           appname: "Verademo"
